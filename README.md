@@ -21,5 +21,24 @@
                 debounceTimer = setTimeOut(func, delay);
             }
         }
-    }
+    };
+```
+
+### 函数节流
+``` JavaScript
+const throttleFunc = (fn, throttleTime = 1000) => {
+    let isValid = true;
+    return () => {
+        if (!isValid) {
+            return;
+        }
+        else {
+            isValid = false;
+            setTimeOut(() => {
+                fn();
+                isValid = true;
+            })
+        }
+    };
+};
 ```
